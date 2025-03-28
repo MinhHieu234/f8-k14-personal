@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="a.css">
+</head>
+<body>
+<h1>Form</h1>
+<form action="https://api-gateway.fullstack.edu.vn/action_page.php"
+method="post"
+      enctype="multipart/form-data">
+
+  <label for="name" >Nhap ho va ten</label>
+  <input id="name" placeholder="ho va ten" name="name" type="text" required/>
+  <br>
+  <label for="age">Nhap tuoi</label>
+  <input id="age"  placeholder="tuoi" name="age" type="number" value="22"/>
+  <br>
+  <label for="address">Nhap dia chi</label>
+  <input id="address" placeholder="dia chi " name="adress" type="text"
+  value="hn" disabled/>
+  <br>
+  <label for="email">Nhap email</label>
+  <input id="email" placeholder="email " name="email" type="email" value="gin@gmail.com" readonly/>
+  <br>
+  <label>Nhap gioi tinh</label>
+  <label for="Male">Male</label>
+  <input id="Male"name="gioitinh" value="male" type="radio"/>
+  <label for="female">Female</label>
+  <input id="female"name="gioitinh"  value="female" type="radio"/>
+  <br>
+  <label >Nhap lang :</label>
+  <label for="vn">VN</label>
+  <input id="vn" type="checkbox" name="language[]" value="vi">
+  <label for="eng">Eng</label>
+  <input id="eng" type="checkbox" name="language[]" value="en">
+  <label for="Jp">JP</label>
+  <input id="Jp" type="checkbox" name="language[]" value="jp">
+  <label for="spain">Spain</label>
+  <input id="spain" type="checkbox" name="language[]" value="spain">
+  <br>
+  <label>ban hoc code o dau :</label>
+  <select name="center">
+    <option value="f8">f8</option>
+    <option value="f12">f12</option>
+    <option value="f88">f88</option>
+  </select>
+  <br>
+  <label>xxx</label>
+  <input type="range" min="0" max="100" name="salary">
+  <br>
+  <label>Mo ta ban than</label>
+  <textarea name="description" rows="5" placeholder="description">
+    what up
+  </textarea>
+  <br>
+  <label for="img">cv</label>
+  <input id="img" type="file" multiple accept="image/*" hidden>
+  <br>
+  <input type="submit"/>
+</form>
+</body>
+</html>

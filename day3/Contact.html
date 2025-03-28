@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Contact</title>
+</head>
+<body>
+<h1>Get in touch with us by filling contact form below</h1>
+<form method="post" action="https://api-gateway.fullstack.edu.vn/action_page.php">
+    <table cellpadding="5">
+        <tr>
+            <td><input type="text" name="firstname" placeholder="first name" /></td>
+            <td><input type="text" name="lastname" placeholder="last name" /></td>
+        </tr>
+
+        <tr>
+            <td><input type="number" name="age" placeholder="age" /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <textarea rows="6" cols="50" name="message" placeholder="message"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Send message</button>
+                <span>*Please fill all required form fields, thanks!</span>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
