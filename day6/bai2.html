@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Bài tập 2</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .wrapper {
+    margin: auto;
+  }
+
+  .faq-item-1, .faq-item-2, .faq-item-3 {
+    display: block;
+    height: 50px;
+    background-color: #d95925;
+    color: white;
+    position: relative;
+    margin: 10px 0;
+    user-select: none;
+  }
+
+  .faq-item-1 > span, .faq-item-2 > span, .faq-item-3 > span {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+  }
+
+  .faq-item-1::before, .faq-item-2::before, .faq-item-3::before {
+    content: "\2b";
+    font-weight: 600;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+  }
+
+  .faq-content-1, .faq-content-2, .faq-content-3 {
+    display: none;
+    min-height: 200px;
+    padding: 15px;
+  }
+
+  ol {
+    margin-left: 20px;
+    padding: 20px;
+  }
+
+  ol span {
+    font-weight: 600;
+  }
+
+  span, ol, p {
+    padding: 5px 0;
+  }
+
+  #toggle-color:checked ~ .faq-content-1 {
+    display: block;
+  }
+
+  #toggle-theme:checked ~ .faq-content-2 {
+    display: block;
+  }
+
+  #toggle-icon:checked ~ .faq-content-3 {
+    display: block;
+  }
+
+  #toggle-color:checked ~ .faq-item-1::before,
+  #toggle-theme:checked ~ .faq-item-2::before,
+  #toggle-icon:checked ~ .faq-item-3::before {
+    font-weight: 600;
+    font-size: 16px;
+  }
+</style>
+<body>
+<div class="wrapper">
+
+  <input type="checkbox" name="toggle-color" id="toggle-color" hidden>
+  <label for="toggle-color" class="faq-item-1">
+    <span>Cách đặt màu ngẫu nhiên?</span>
+  </label>
+  <div class="faq-content-1">
+    <span>Để đặt màu ngẫu nhiên:</span>
+    <ol>
+      <li>Thêm class <span>jag-fag-random-colors</span>.</li>
+      <li>Để thay đổi màu, mở theme{num}.css và tìm "jag-faq-random-colors".</li>
+      <li>Bạn có thể thay đổi màu tại đây.</li>
+    </ol>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda corporis doloremque eius eligendi esse fugiat incidunt laboriosam laudantium minus natus nemo nobis recusandae ullam unde velit, voluptas voluptate! Ad adipisci ipsam iure odit? Consequuntur ducimus eaque exercitationem facere facilis nam nesciunt quas quibusdam tenetur velit. Cupiditate delectus, deserunt distinctio eaque eos fugiat molestias necessitatibus non nulla officia omnis quia saepe sit soluta temporibus ullam vel veniam veritatis voluptate voluptatem. Delectus dolorum sint vel! Consectetur magni numquam obcaecati placeat possimus suscipit</p>
+  </div>
+
+  <input type="checkbox" name="toggle-theme" id="toggle-theme" hidden>
+  <label for="toggle-theme" class="faq-item-2">
+    <span>Cách sử dụng và thêm màu chủ đề?</span>
+  </label>
+  <div class="faq-content-2">
+    <span>Để đặt màu chủ đề:</span>
+    <ol>
+      <li>Thêm class <span>jag-fag-random-colors</span>.</li>
+      <li>Để thay đổi màu, mở theme{num}.css và tìm "jag-faq-random-colors".</li>
+      <li>Bạn có thể thay đổi màu tại đây.</li>
+    </ol>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda corporis doloremque eius eligendi esse fugiat incidunt laboriosam laudantium minus natus nemo nobis recusandae ullam unde velit, voluptas voluptate! Ad adipisci ipsam iure odit? Consequuntur ducimus eaque exercitationem facere facilis nam nesciunt quas quibusdam tenetur velit. Cupiditate delectus, deserunt distinctio eaque eos fugiat molestias necessitatibus non nulla officia omnis quia saepe sit soluta temporibus ullam vel veniam veritatis voluptate voluptatem. Delectus dolorum sint vel! Consectetur magni numquam obcaecati placeat possimus suscipit</p>
+  </div>
+
+  <input type="checkbox" name="toggle-icon" id="toggle-icon" hidden>
+  <label for="toggle-icon" class="faq-item-3">
+    <span>Cách thay đổi biểu tượng?</span>
+  </label>
+  <div class="faq-content-3">
+    <span>Để thay đổi biểu tượng:</span>
+    <ol>
+      <li>Thêm class <span>jag-fag-random-colors</span>.</li>
+      <li>Để thay đổi màu, mở theme{num}.css và tìm "jag-faq-random-colors".</li>
+      <li>Bạn có thể thay đổi màu tại đây.</li>
+    </ol>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda corporis doloremque eius eligendi esse fugiat incidunt laboriosam laudantium minus natus nemo nobis recusandae ullam unde velit, voluptas voluptate! Ad adipisci ipsam iure odit? Consequuntur ducimus eaque exercitationem facere facilis nam nesciunt quas quibusdam tenetur velit. Cupiditate delectus, deserunt distinctio eaque eos fugiat molestias necessitatibus non nulla officia omnis quia saepe sit soluta temporibus ullam vel veniam veritatis voluptate voluptatem. Delectus dolorum sint vel! Consectetur magni numquam obcaecati placeat possimus suscipit</p>
+  </div>
+
+</div>
+</body>
+</html>

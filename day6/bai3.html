@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 30px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #333333;
+    }
+
+    p {
+      color: #736f6c;
+    }
+
+    .services {
+      margin-top: 90px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .blue, .red, .green {
+      width: 350px;
+      height: 500px;
+      background: white;
+      display: inline-block;
+      box-shadow: 0px 2px 40px 10px rgba(0,0,0,0.1);
+      position: relative;
+      border-radius: 8px;
+    }
+
+    .service-content {
+      width: 90%;
+      height: 80%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .icon-circle {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #f2a83a;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+
+    h2 {
+      font-size: 32px;
+      position: absolute;
+      top: 182px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .service-text {
+      width: 100%;
+      position: absolute;
+      top: 233px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 20px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .service-button {
+      padding: 20px 50px;
+      border: none;
+      background: #f1a83a;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-button:hover {
+      background-color: #e09729;
+    }
+
+    .icon-circle i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: #f1a83a;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Take a look at our services</h1>
+  <p>Duis fringilla erat amet sapien dignissim hendrerit vel sit amet libero.</p>
+
+  <div class="services">
+    <div class="blue">
+      <div class="service-content">
+        <div class="icon-circle">
+          <i class="fa-solid fa-camera"></i>
+        </div>
+        <h2>Photography</h2>
+        <p class="service-text">Proesent vitae ligula nulla. Currabitur porta dolor vitae felis vestibulum.</p>
+        <button class="service-button">Road More</button>
+      </div>
+    </div>
+
+    <div class="red">
+      <div class="service-content">
+        <div class="icon-circle">
+          <i class="fa-solid fa-laptop"></i>
+        </div>
+        <h2>Web Designing</h2>
+        <p class="service-text">Proesent vitae ligula nulla. Currabitur porta dolor vitae felis vestibulum.</p>
+        <button class="service-button">Road More</button>
+      </div>
+    </div>
+
+    <div class="green">
+      <div class="service-content">
+        <div class="icon-circle">
+          <i class="fa-solid fa-video"></i>
+        </div>
+        <h2>Videograpphy</h2>
+        <p class="service-text">Proesent vitae ligula nulla. Currabitur porta dolor vitae felis vestibulum.</p>
+        <button class="service-button">Road More</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
