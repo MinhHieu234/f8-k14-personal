@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khu vực bất động sản</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Asap", sans-serif;
+    }
+
+    .wrapper {
+      max-width: 1400px;
+      width: calc(100% - 2 * 24px);
+      margin: 0 auto;
+      margin-top: 40px;
+      border-bottom: 3px solid #af7c38;
+      padding-bottom: 10px;
+    }
+
+    .section-heading {
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 24px;
+    }
+
+    .button-tabs {
+      display: flex;
+      list-style: none;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .button-tab {
+      text-align: center;
+      padding: 10px 20px;
+      background-color: #eee;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: color 0.25s, background-color 0.25s;
+    }
+
+    .button-tab.active,
+    .button-tab:hover {
+      color: #fff;
+      background-color: #af7c38;
+    }
+
+    .button-tab h2 {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .button-tab i {
+      font-size: 13px;
+    }
+
+    .area-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .area-card {
+      width: calc(33.333% - 13.33px);
+      border-radius: 6px;
+      list-style: none;
+      position: relative;
+      box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .area-card img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      filter: brightness(80%);
+      border-radius: 6px;
+      display: block;
+      transition: transform 0.25s;
+    }
+
+    .area-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .area-card h3,
+    .area-card p {
+      position: absolute;
+      left: 20px;
+      color: #fff;
+      z-index: 1;
+    }
+
+    .area-card h3 {
+      top: 20px;
+      font-size: 22px;
+    }
+
+    .area-card p {
+      bottom: 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <h1 class="section-heading">khám phá bất động sản khu vực nổi bật</h1>
+  <ul class="button-tabs">
+    <li class="button-tab active">
+      <h2>Hồ Chí Minh</h2>
+      <i>50.317 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Hà Nội</h2>
+      <i>18.767 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Bình Dương</h2>
+      <i>7.051 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Đồng Nai</h2>
+      <i>4.251 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Bà Rịa Vũng Tàu</h2>
+      <i>3.968 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Đà Nẵng</h2>
+      <i>3.680 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Long An</h2>
+      <i>2.835 bất động sản</i>
+    </li>
+    <li class="button-tab">
+      <h2>Quảng Ninh</h2>
+      <i>2.490 bất động sản</i>
+    </li>
+  </ul>
+
+  <ul class="area-list">
+    <li class="area-card">
+      <h3>Quận 2</h3>
+      <p><b>4.186</b> bất động sản đang bán</p>
+      <img
+              src="https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Quận 2"
+      />
+    </li>
+    <li class="area-card">
+      <h3>Quận 7</h3>
+      <p><b>4.664</b> bất động sản đang bán</p>
+      <img
+              src="https://images.pexels.com/photos/409127/pexels-photo-409127.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Quận 7"
+      />
+    </li>
+    <li class="area-card">
+      <h3>Quận 9</h3>
+      <p><b>3.702</b> bất động sản đang bán</p>
+      <img
+              src="https://images.pexels.com/photos/1209978/pexels-photo-1209978.jpeg?auto=compress&cs=tinysrgb&w=300"
+              alt="Quận 9"
+      />
+    </li>
+    <li class="area-card">
+      <h3>Quận Tân Bình</h3>
+      <p><b>3.062</b> bất động sản đang bán</p>
+      <img
+              src="https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&w=300"
+              alt="Quận Tân Bình"
+      />
+    </li>
+    <li class="area-card">
+      <h3>Thành phố Thủ Đức</h3>
+      <p><b>2.843</b> bất động sản đang bán</p>
+      <img
+              src="https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg?auto=compress&cs=tinysrgb&w=300"
+              alt="Thành phố Thủ Đức"
+      />
+    </li>
+    <li class="area-card">
+      <h3>Huyện Bình Chánh</h3>
+      <p><b>3.235</b> bất động sản đang bán</p>
+      <img
+              src="https://images.pexels.com/photos/1374377/pexels-photo-1374377.jpeg?auto=compress&cs=tinysrgb&w=300"
+              alt="Huyện Bình Chánh"
+      />
+    </li>
+  </ul>
+</div>
+</body>
+</html>
