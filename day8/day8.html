@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day-9</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css"
+        integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrapper {
+      display: flex;
+      height: 100vh;
+    }
+
+    .panel {
+      padding: 20px;
+      background-color: #272247;
+      color: #fff;
+    }
+
+    .panel__logo {
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    .menu {
+      margin-left: 10px;
+    }
+
+    .menu__link {
+      display: flex;
+      padding: 10px 0;
+      gap: 10px;
+      font-size: 18px;
+    }
+
+    .menu__link + .menu__link {
+      margin-top: 10px;
+    }
+
+    .main {
+      flex: 1;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .menu__icon-expand {
+      margin-left: auto;
+    }
+
+    .menu__heading {
+      font-size: 20px;
+      margin: 40px 0 20px;
+    }
+
+    .main__title {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 32px;
+    }
+
+    .member-table {
+      margin: 40px auto 0;
+      width: 80%;
+      border-collapse: collapse;
+    }
+
+    .member-table th,
+    .member-table td {
+      padding: 16px;
+      text-align: left;
+    }
+
+    .member-table th {
+      font-size: 22px;
+    }
+
+    .member-table tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-update {
+      background-color: green;
+    }
+
+    .btn-remove {
+      background-color: red;
+      margin-left: 10px;
+    }
+
+    /* Popup styles */
+    .popup-wrapper {
+      position: fixed;
+      inset: 0;
+      display: none;
+      z-index: 100;
+    }
+
+    .popup-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .popup-box {
+      position: absolute;
+      color: #000;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: #1c2333;
+      color: #fff;
+    }
+
+    .popup-header > h2 {
+      font-size: 26px;
+    }
+
+    .popup-header > label span {
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .popup-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .popup-select,
+    .popup-input {
+      padding: 15px 20px;
+      border: 1px solid #1c2333;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .popup-btn {
+      flex: 1;
+      padding: 10px;
+      color: #fff;
+      font-family: system-ui;
+      font-size: 18px;
+      border: none;
+      text-align: center;
+    }
+
+    .popup-btn-close {
+      background-color: red;
+    }
+
+    .popup-btn-save {
+      background-color: green;
+    }
+
+    /* Toggle popup */
+    input#popup-toggle:checked ~ .popup-wrapper {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <aside class="panel">
+    <a href="#" class="panel__logo">
+      <span class="mdi mdi-stack-overflow"></span>
+      <span>F8 Admin</span>
+    </a>
+    <nav class="menu">
+      <h2 class="menu__heading">Menu</h2>
+      <a href="#!" class="menu__link">
+        <span class="mdi mdi-account"></span>
+        <span>Quản lý đơn hàng</span>
+      </a>
+      <a href="#!" class="menu__link">
+        <span class="mdi mdi-account"></span>
+        <span>Quản lý xe</span>
+        <span class="mdi mdi-chevron-down menu__icon-expand"></span>
+      </a>
+      <a href="#!" class="menu__link">
+        <span class="mdi mdi-account"></span>
+        <span>Quản lý dịch vụ</span>
+      </a>
+      <a href="#!" class="menu__link">
+        <span class="mdi mdi-account"></span>
+        <span>Cài đặt khác</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <h2 class="main__title">Members</h2>
+    <table class="member-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Mail</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>Tran Van A</td>
+        <td>a@test.com</td>
+        <td>
+          <label for="popup-toggle" class="btn btn-update">
+            <span class="mdi mdi-pencil"></span> edit
+          </label>
+          <button class="btn btn-remove">
+            <span class="mdi mdi-trash-can-outline"></span> delete
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Tran Van B</td>
+        <td>b@test.com</td>
+        <td>
+          <label for="popup-toggle" class="btn btn-update">
+            <span class="mdi mdi-pencil"></span> edit
+          </label>
+          <button class="btn btn-remove">
+            <span class="mdi mdi-trash-can-outline"></span> delete
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Tran Van C</td>
+        <td>c@test.com</td>
+        <td>
+          <label for="popup-toggle" class="btn btn-update">
+            <span class="mdi mdi-pencil"></span> edit
+          </label>
+          <button class="btn btn-remove">
+            <span class="mdi mdi-trash-can-outline"></span> delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<input type="checkbox" id="popup-toggle" hidden />
+
+<div class="popup-wrapper">
+  <label for="popup-toggle" class="popup-overlay"></label>
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2>New member</h2>
+      <label for="popup-toggle"><span class="mdi mdi-close"></span></label>
+    </div>
+    <form class="popup-body">
+      <select class="popup-select" name="skill">
+        <option value="" hidden>Skill</option>
+        <option value="Skill 1">Skill 1</option>
+        <option value="Skill 2">Skill 2</option>
+        <option value="Skill 3">Skill 3</option>
+      </select>
+      <input class="popup-input" type="text" name="name" placeholder="Name" />
+      <input class="popup-input" type="email" name="email" placeholder="Email" />
+      <div class="popup-buttons">
+        <label for="popup-toggle" class="popup-btn popup-btn-close">Close</label>
+        <button type="submit" class="popup-btn popup-btn-save">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
