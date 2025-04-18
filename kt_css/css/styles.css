@@ -1,0 +1,127 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+/* * * Start CSS Chung * * *  */
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Work Sans", sans-serif;
+    color: #ffffff;
+}
+textarea,
+label,
+input,
+select,
+button {
+    font-size: inherit;
+    font-family: inherit;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: "Work Sans", sans-serif;
+    background: #2b2b2b;
+}
+/* * * End CSS Chung * * *  */
+/* =============== Start Common Nutton =============  */
+.btn {
+    --width: initial;
+    --height: initial;
+    --bgc: initial;
+    --border-radius: initial;
+    --gap: initial;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+
+    min-width: var(--width);
+    height: var(--height);
+
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+
+    background-color: var(--bgc);
+    border-radius: var(--border-radius);
+    border: currentColor;
+
+    transition: background-color 0.2s ease-in;
+    cursor: pointer;
+    user-select: none;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+.btn--primary {
+}
+.btn--secondary {
+    --width: 186px;
+    --height: 60px;
+    --bgc: #a259ff;
+    --border-radius: 20px;
+    --gap: 12px;
+}
+
+.container {
+    /* 1050 + 115 x 2 */
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 115px;
+}
+/* =============== End Common =============  */
+
+/* * * Start Header * * *  */
+.header {
+    padding: 20px 50px;
+}
+.header__inner {
+    display: flex;
+    align-items: center;
+}
+.header__logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.header__nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.header__list {
+    display: flex;
+    align-items: center;
+}
+.header__link {
+    font-size: 1.6rem;
+    padding: 12px 20px;
+    color: #fff;
+    transition: color 0.05s ease-in;
+}
+.header__link:hover {
+    color: #a259ff;
+}
+.header__btn {
+    margin-left: 10px;
+}
+
+.header__btn {
+    --width: 152px;
+}
+
+.header__btn-menu {
+    display: none;
+}
+/* * * END Header * * *  */
