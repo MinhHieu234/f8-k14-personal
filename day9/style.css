@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    --heading-font-family: "Space Grotesk", sans-serif;
+    --heading-font-weight: 700;
+    --content-font-family: "Inter", sans-serif;
+    --content-font-weight: 400;
+    --primary-color: #27283b;
+    --content-color: #7a7a7e;
+}
+
+.wrapper {
+    width: 1547px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    column-gap: 100px;
+}
+
+.timeline-wrapper {
+    width: 39.43%;
+}
+
+.visual-box {
+    width: 38.72%;
+    max-width: 100%;
+}
+
+.section-one,
+.section-two,
+.section-three,
+.section-four {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.section-one:hover,
+.section-two:hover,
+.section-three:hover,
+.section-four:hover {
+    flex-direction: row-reverse;
+}
+
+.section-one:hover .content-box,
+.section-two:hover .content-box,
+.section-three:hover .content-box,
+.section-four:hover .content-box {
+    text-align: left;
+}
+
+.section-one:hover > p,
+.section-two:hover > p,
+.section-three:hover > p,
+.section-four:hover > p {
+    text-align: right;
+}
+
+.section-one:hover .label,
+.section-two:hover .label,
+.section-three:hover .label,
+.section-four:hover .label {
+    color: #fff;
+    background-color: #a26f5a;
+}
+
+
+.content-box {
+    width: 261px;
+    text-align: right;
+}
+
+.content-box .heading {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    font-size: 2rem;
+    line-height: 25px;
+}
+
+.content-box .description {
+    margin-top: 10px;
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+.content-box .label {
+    display: inline-block;
+    min-width: 84px;
+    padding: 5px 15px;
+    margin-top: 18px;
+    background: #f2f2f2;
+    border-radius: 999px;
+    font-family: var(--content-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+
+.line-pattern {
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.line-pattern .circle-icon {
+    width: 25px;
+    height: 25px;
+    background: #ecf5f3;
+    border-radius: 50%;
+    display: flex;
+}
+
+.circle-icon .dot {
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    background: #5ABBAB;
+    background: linear-gradient(180deg, rgba(90, 187, 171, 1) 0%, rgba(60, 135, 123, 1) 89%);
+    border-radius: 50%;
+}
+
+.line-pattern .divider {
+    width: 1px;
+    height: 141px;
+    background: #f2f2f2;
+}
+
+
+.year-range {
+    width: 261px;
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    line-height: 25px;
+}
+
+
+
+.visual-box {
+    position: relative;
+}
+
+.visual-box .main-img {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.info-overlay {
+    width: 280px;
+    height: 379px;
+    background-image: url("https://thuytinhocean.net/wp-content/uploads/2022/10/anh-nen-chelsea-cuc-dep.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    padding: 10px;
+}
+
+.info-overlay .highlight-bar {
+    background: #596297;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.info-overlay .stat-number {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    font-size: 8rem;
+    background-image: url("https://thuytinhocean.net/wp-content/uploads/2022/10/anh-nen-chelsea-cuc-dep.jpg");
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    inset: 0;
+    width: 280px;
+    height: 379px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 30px 30px 60px 30px;
+}
+
+.stat-number span {
+    position: absolute;
+    bottom: 60px;
+    right: 30px;
+}
+
+.info-overlay .highlight-text {
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+}

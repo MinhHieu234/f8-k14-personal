@@ -1,0 +1,147 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    padding-top: 100px;
+    font-size: 2rem;
+    color: #888888;
+}
+
+
+h1, p {
+    color: #000;
+}
+
+
+.form-wrapper {
+    width: 900px;
+    margin: 0 auto;
+}
+
+
+.form-header {
+    text-align: center;
+}
+
+.form-description {
+    margin-top: 30px;
+}
+
+
+form {
+    margin: 50px 0;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.form-field {
+    position: relative;
+    flex: 1;
+    border: 1px solid #a5a5a5;
+    border-radius: 4px;
+}
+
+input, textarea, select {
+    all: unset;
+    word-break: break-word;
+    width: calc(100% - 40px);
+    padding: 20px;
+    color: #000;
+    display: inline-block;
+}
+
+
+.form-label {
+    position: absolute;
+    cursor: text;
+    top: 20px;
+    left: 20px;
+    transition: all 0.2s ease;
+}
+
+
+.form-field:has(input:focus),
+.form-field:has(input:not(:placeholder-shown)),
+.form-field:has(textarea:focus),
+.form-field:has(textarea:not(:placeholder-shown)) {
+    border-color: #215dcd;
+}
+
+.form-field:has(input:focus) input,
+.form-field:has(input:not(:placeholder-shown)) input,
+.form-field:has(textarea:focus) textarea,
+.form-field:has(textarea:not(:placeholder-shown)) textarea {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+.form-field:has(input:focus) .form-label,
+.form-field:has(input:not(:placeholder-shown)) .form-label,
+.form-field:has(textarea:focus) .form-label,
+.form-field:has(textarea:not(:placeholder-shown)) .form-label {
+    font-size: 1.5rem;
+    top: 10px;
+}
+
+
+.select-wrapper select {
+    color: #757575;
+}
+
+.select-wrapper select:valid {
+    color: #000;
+}
+
+.select-wrapper option {
+    color: #000;
+}
+
+
+.mdi {
+    position: absolute;
+    font-size: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    pointer-events: none;
+}
+
+select:focus + .mdi::before {
+    rotate: 180deg;
+}
+
+
+.form-submit-btn {
+    all: unset;
+    margin-top: 50px;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #0038ea;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+
+.hidden {
+    display: none;
+}
