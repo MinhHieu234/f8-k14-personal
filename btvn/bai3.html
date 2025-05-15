@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Đổi nội dung thẻ P</title>
+</head>
+<body>
+<button id="changeTextBtn">Đổi nội dung tất cả P</button>
+<p>Đoạn 1</p>
+<p>Đoạn 2</p>
+<p>Đoạn 3</p>
+
+<script>
+  document.getElementById("changeTextBtn").addEventListener("click", function() {
+    const paragraphs = document.getElementsByTagName("p");
+    for (let i = 0; i < paragraphs.length; i++) {
+      paragraphs[i].textContent = "Đã đổi nội dung " + (i + 1);
+    }
+  });
+</script>
+</body>
+</html>
