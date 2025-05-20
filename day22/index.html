@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+  <style>
+    .container {
+      width: 600px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+    table thead tr th {
+      border-top: 1px solid #ccc;
+    }
+    td, th {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+      font-size: 20px;
+    }
+    .edit-btn {
+      color: green;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .del-btn {
+      color: red;
+      cursor: pointer;
+    }
+    .text-align-right {
+      text-align: right;
+    }
+    .text-align-center {
+      text-align: center;
+    }
+    .container input[name="search"] {
+      padding: 12px;
+      width: 100%;
+      font-size: 24px;
+    }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+    }
+    .search-bar button {
+      width: 100px;
+      font-size: 16px;
+      background: green;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 24px 28px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
+    }
+    .popup-content h3 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .popup-content input[type="text"],
+    .popup-content input[type="number"],
+    .popup-content select {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease;
+    }
+    .popup-content input:focus,
+    .popup-content select:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+    .popup-content .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .popup-content button {
+      padding: 8px 18px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #f2f2f2;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .popup-content button:hover {
+      background: #e2e2e2;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="search-bar">
+    <input placeholder="search employees" name="search"/>
+    <button onclick="openForm()">Add new</button>
+  </div>
+  <table cellspacing="0">
+    <thead>
+    <tr></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="popup" id="popupForm">
+  <div class="popup-content">
+    <h3 id="popupTitle">Add new employee</h3>
+    <input type="text" id="nameInput" placeholder="name">
+    <input type="text" id="addressInput" placeholder="address">
+    <input type="number" id="ageInput" placeholder="age">
+    <select id="cityInput">
+      <option value="">-- Chọn thành phố --</option>
+      <option value="Hà Nội">Hà Nội</option>
+      <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+      <option value="Đà Nẵng">Đà Nẵng</option>
+      <option value="Cần Thơ">Cần Thơ</option>
+    </select>
+    <div class="actions">
+      <button onclick="closeForm()">Cancel</button>
+      <button onclick="saveEmployee()">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const headers = [
+    { name: 'id', text: 'Id', align: 'center' },
+    { name: 'name', text: 'Ten' },
+    { name: 'address', text: 'Dia Chi' },
+    { name: 'city', text: 'Thanh Pho' },
+    { name: 'age', text: 'Tuoi', align: 'right' },
+    { name: 'action', text: 'Action', align: 'center' },
+  ];
+
+  let employees = [
+    {id: 1, name: 'Tran Pham Tin', address: 'Hoai Duc - Ha Noi', city: 'Hà Nội', age: 27},
+    {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', city: 'Hà Nội', age: 27},
+    {id: 3, name: 'Pham Nguyen Bac', address: 'Soc Son - Ha Noi', city: 'Hà Nội', age: 27},
+  ];
+
+  let nextId = 4;
+  let editingId = null;
+
+  const generateSearchStr = (emp) => {
+    return `${emp.name}|${emp.address}|${emp.city}|${emp.age}`.toLowerCase();
+  };
+
+  const renderTable = (data) => {
+    const tableHeaderE = document.querySelector('table thead tr');
+    tableHeaderE.innerHTML = '';
+    headers.forEach(header => {
+      const cell = document.createElement('th');
+      cell.innerText = header.text;
+      tableHeaderE.append(cell);
+    });
+
+    const tableBodyE = document.querySelector('table tbody');
+    tableBodyE.innerHTML = '';
+
+    data.forEach(employee => {
+      if (!employee.searchStr) {
+        employee.searchStr = generateSearchStr(employee);
+      }
+
+      const row = document.createElement('tr');
+      headers.forEach(header => {
+        const cell = document.createElement('td');
+        if (header.name === 'action') {
+          const editBtn = document.createElement('span');
+          const delBtn = document.createElement('span');
+
+          editBtn.setAttribute('class', 'mdi mdi-pencil-outline edit-btn');
+          delBtn.setAttribute('class', 'mdi mdi-trash-can-outline del-btn');
+
+          editBtn.onclick = () => openForm(employee);
+          delBtn.onclick = () => deleteEmployee(employee.id);
+
+          cell.appendChild(editBtn);
+          cell.appendChild(delBtn);
+        } else {
+          cell.innerText = employee[header.name];
+        }
+
+        if (header.align) cell.setAttribute('class', `text-align-${header.align}`);
+        row.append(cell);
+      });
+      tableBodyE.append(row);
+    });
+  };
+
+  const inputE = document.querySelector('.container input[name="search"]');
+  inputE.addEventListener('input', (e) => {
+    const keyword = e.target.value.toLowerCase();
+    const filtered = employees.filter(emp => emp.searchStr && emp.searchStr.includes(keyword));
+    renderTable(filtered);
+  });
+
+  const openForm = (employee = null) => {
+    document.getElementById('popupForm').style.display = 'flex';
+    const popupTitle = document.getElementById('popupTitle');
+
+    if (employee) {
+      editingId = employee.id;
+      popupTitle.innerText = 'Edit employee';
+      document.getElementById('nameInput').value = employee.name;
+      document.getElementById('addressInput').value = employee.address;
+      document.getElementById('ageInput').value = employee.age;
+      document.getElementById('cityInput').value = employee.city;
+    } else {
+      editingId = null;
+      popupTitle.innerText = 'Add new employee';
+      clearInputs();
+    }
+  };
+
+  const closeForm = () => {
+    document.getElementById('popupForm').style.display = 'none';
+    clearInputs();
+  };
+
+  const clearInputs = () => {
+    document.getElementById('nameInput').value = '';
+    document.getElementById('addressInput').value = '';
+    document.getElementById('ageInput').value = '';
+    document.getElementById('cityInput').value = '';
+  };
+
+  const saveEmployee = () => {
+    const name = document.getElementById('nameInput').value.trim();
+    const address = document.getElementById('addressInput').value.trim();
+    const age = document.getElementById('ageInput').value.trim();
+    const city = document.getElementById('cityInput').value;
+
+    if (!name || !address || !age || !city) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    if (editingId) {
+      const employee = employees.find(e => e.id === editingId);
+      if (employee) {
+        employee.name = name;
+        employee.address = address;
+        employee.age = parseInt(age);
+        employee.city = city;
+        employee.searchStr = generateSearchStr(employee);
+      }
+    } else {
+      const newEmp = {
+        id: nextId++,
+        name,
+        address,
+        age: parseInt(age),
+        city
+      };
+      newEmp.searchStr = generateSearchStr(newEmp);
+      employees.push(newEmp);
+    }
+
+    closeForm();
+    renderTable(employees);
+  };
+
+  const deleteEmployee = (id) => {
+    if (confirm('Bạn có muốn xóa không ?')) {
+      employees = employees.filter(e => e.id !== id);
+      renderTable(employees);
+    }
+  };
+
+  renderTable(employees);
+</script>
+</body>
+</html>
