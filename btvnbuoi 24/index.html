@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    #app {
+      flex: 1;
+    }
+
+    .question-title {
+      border: 1px solid #ccc;
+      padding: 32px;
+    }
+
+    .question-option {
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .check-btn, .next-btn, .fifty-btn, .audience-btn, .phone-btn, .expert-btn {
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .check-btn:active {
+      background-color: #9ec2bb;
+      user-select: none;
+    }
+
+    .next-btn:active {
+      background-color: #c2b99e;
+      user-select: none;
+    }
+
+    .fifty-btn:active,
+    .audience-btn:active,
+    .phone-btn:active,
+    .expert-btn:active {
+      background-color: #9ec2bb;
+      user-select: none;
+    }
+
+    #reward-board {
+      width: 250px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+
+    #reward-board h3 {
+      margin-top: 0;
+    }
+
+    #reward-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    #reward-list li {
+      padding: 6px;
+      border-bottom: 1px solid #eee;
+    }
+
+    #reward-list li.active {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app">
+  <div class="question">
+    <div class="question-title">How are you</div>
+    <div class="question-option" value="a">A: OK</div>
+    <div class="question-option" value="b">B: hmm</div>
+    <div class="question-option" value="c">C: good</div>
+    <div class="question-option" value="d">D: i'm bang</div>
+  </div>
+
+  <div class="check-btn">Check</div>
+  <div class="next-btn">Next Question</div>
+  <div class="fifty-btn">50-50</div>
+  <div class="audience-btn">Hỏi khán giả</div>
+  <div class="phone-btn">Gọi điện</div>
+  <div class="expert-btn">Tư vấn chuyên gia</div>
+
+  <div id="time">30</div>
+</div>
+
+<div id="reward-board">
+  <h3>Mức thưởng:</h3>
+  <ul id="reward-list">
+    <li>Câu 15: 150.000.000 VND</li>
+    <li>Câu 14: 85.000.000 VND</li>
+    <li>Câu 13: 60.000.000 VND</li>
+    <li>Câu 12: 40.000.000 VND</li>
+    <li>Câu 11: 30.000.000 VND</li>
+    <li>Câu 10: 22.000.000 VND</li>
+    <li>Câu 9: 14.000.000 VND</li>
+    <li>Câu 8: 10.000.000 VND</li>
+    <li>Câu 7: 6.000.000 VND</li>
+    <li>Câu 6: 3.000.000 VND</li>
+    <li>Câu 5: 2.000.000 VND</li>
+    <li>Câu 4: 1.000.000 VND</li>
+    <li>Câu 3: 600.000 VND</li>
+    <li>Câu 2: 400.000 VND</li>
+    <li class="active">Câu 1: 200.000 VND</li>
+  </ul>
+</div>
+
+<script>
+  const timeRef = document.getElementById('time')
+  let countdown = 30
+
+  const setTime = () => {
+    timeRef.innerText = --countdown
+    if (countdown === 0) {
+      clearInterval(itv)
+    }
+  }
+
+  const itv = setInterval(setTime, 1000)
+
+  let curIndex = 0;
+  function updateRewardHighlight(index) {
+    const rewardItems = document.querySelectorAll('#reward-list li');
+    rewardItems.forEach(item => item.classList.remove('active'));
+    const rewardIndex = 14 - index;
+    if (rewardItems[rewardIndex]) {
+      rewardItems[rewardIndex].classList.add('active');
+    }
+  }
+
+  document.querySelector('.next-btn').addEventListener('click', () => {
+    curIndex = (curIndex + 1) % 15;
+    updateRewardHighlight(curIndex);
+    countdown = 30;
+    clearInterval(itv);
+    setInterval(setTime, 1000);
+  });
+</script>
+
+<script type="module" src="referances.js"></script>
+<script type="module" src="const.js"></script>
+<script type="module" src="render.js"></script>
+
+</body>
+</html>
