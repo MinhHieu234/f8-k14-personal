@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    },
+    {
+      "id": "3",
+      "title": "another ",
+      "views": 150
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "member": [
+    {
+      "id": "2",
+      "name": "Viet"
+    },
+    {
+      "id": "3",
+      "name": "nam"
+    },
+    {
+      "id": "4",
+      "name": "gin"
+    },
+    {
+      "id": "a529",
+      "name": "Cong Minh"
+    }
+  ]
+}

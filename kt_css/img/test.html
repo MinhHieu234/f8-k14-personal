@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Absence Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: auto;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+    input {
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+<input type="text" id="searchInput" placeholder="Search by employee name..." />
+
+<table id="myTable">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Team</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+  </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+  const teams = [
+    { id: 1, name: "Reactjs" },
+    { id: 2, name: "Expressjs" },
+    { id: 3, name: "Nestjs" }
+  ];
+
+  const employees = [
+    { id: 1, name: "Nguyen Minh Viet", teamId: 1 },
+    { id: 2, name: "Tran Thuy Quynh", teamId: 2 },
+    { id: 3, name: "Tran Cong Tin", teamId: 1 },
+    { id: 4, name: "Nguyen Nam Tao", teamId: 2 },
+    { id: 5, name: "Bui Kong Minh", teamId: 3 }
+  ];
+
+  const absences = [
+    { id: 1, employeeId: 1, date: "mon", time: "8:00-9:00" },
+    { id: 2, employeeId: 1, date: "tue", time: "16:00-17:00" },
+    { id: 3, employeeId: 3, date: "thu", time: "11:00-12:00" },
+    { id: 4, employeeId: 2, date: "wed", time: "11:00-12:00" },
+    { id: 5, employeeId: 5, date: "fri", time: "9:00-11:00" },
+    { id: 6, employeeId: 3, date: "mon", time: "8:00-9:00" }
+  ];
+
+  const days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+  function renderTable(filter = "") {
+    const tbody = document.querySelector("#myTable tbody");
+    tbody.innerHTML = "";
+
+    const filteredEmployees = employees.filter(emp =>
+            emp.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filteredEmployees.forEach(employee => {
+      const team = teams.find(t => t.id === employee.teamId)?.name || "Unknown";
+      const row = document.createElement("tr");
+      let html = `<td>${employee.name}</td><td>${team}</td>`;
+      days.forEach(day => {
+        const absence = absences.find(a => a.employeeId === employee.id && a.date === day);
+        html += `<td>${absence ? absence.time : "Full-time"}</td>`;
+      });
+      row.innerHTML = html;
+      tbody.appendChild(row);
+    });
+  }
+
+  renderTable();
+
+  document.getElementById("searchInput").addEventListener("input", (e) => {
+    renderTable(e.target.value);
+  });
+</script>
+
+</body>
+</html>

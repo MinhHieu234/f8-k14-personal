@@ -3,7 +3,6 @@ export class Order {
     #customer;
     #products;
     #orderDate;
-
     constructor(id, customer, orderDate = new Date()) {
         this.#id = id;
         this.#customer = customer;

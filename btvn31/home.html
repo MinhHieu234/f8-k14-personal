@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+<h1>abc</h1>
+<div id="postList">abc</div>
+
+<script>
+  async function fetchPosts() {
+    const access = localStorage.getItem("access");
+    const refresh = localStorage.getItem("refresh");
+
+    if (!access || !refresh) {
+      alert("Bạn chưa đăng nhập.");
+      return window.location.href = "index.html";
+    }
+
+    try {
+      let res = await fetch("https://8fty49z8qb.execute-api.ap-southeast-1.amazonaws.com/post/", {
+        headers: {
+          Authorization: "Bearer " + access
+        }
+      });
+      if (res.status === 401) {
+        const tokenRes = await fetch("https://8fty49z8qb.execute-api.ap-southeast-1.amazonaws.com/login/get_new_token/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ refresh })
+        });
+
+        if (tokenRes.ok) {
+          const tokenData = await tokenRes.json();
+          localStorage.setItem("access", tokenData.access_token);
+          return fetchPosts();
+        } else {
+          alert("Phiên đăng nhập đã hết, vui lòng đăng nhập lại.");
+          return window.location.href = "index.html";
+        }
+      }
+      const data = await res.json();
+
+      if (!data.posts || !Array.isArray(data.posts)) {
+        document.getElementById("postList").innerText = "Không có bài viết nào.";
+        return;
+      }
+
+      document.getElementById("postList").innerHTML = data.posts.map(
+              p => `<p>${p.title}</p>`
+      ).join("");
+    } catch (error) {
+      console.error("Lỗi khi gọi API:", error);
+      document.getElementById("postList").innerText = "Lỗi khi tải bài viết.";
+    }
+  }
+  fetchPosts();
+</script>
+</body>
+</html>
