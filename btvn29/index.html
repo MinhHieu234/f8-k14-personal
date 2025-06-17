@@ -85,7 +85,7 @@
         container.innerHTML = '';
 
         products.forEach(product => {
-            const card = document.createElement('div'); // ✅ tạo thẻ mới
+            const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
             <img src="${product.image}" alt="${product.title}">
@@ -103,7 +103,6 @@
         renderProducts(products);
     };
     main();
-
 </script>
 </body>
 </html>

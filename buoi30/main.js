@@ -32,11 +32,9 @@ function renderTodo(todo) {
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "del-btn fa-solid fa-trash";
     deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
-
     todoItem.appendChild(checkbox);
     todoItem.appendChild(content);
     todoItem.appendChild(deleteBtn);
-
     todoList.appendChild(todoItem);
 }
 
@@ -47,7 +45,6 @@ todoForm.addEventListener("submit", async (e) => {
         alert("Vui lòng nhập nội dung công việc.");
         return;
     }
-
     const newTodo = { title, completed: false };
     try {
         const res = await fetch(API_URL, {
