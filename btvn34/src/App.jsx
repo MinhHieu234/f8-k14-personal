@@ -97,10 +97,8 @@ function App() {
             >
                 Thêm nhân viên mới
             </Button>
-
             <ToastContainer position="top-right" autoClose={2000} />
         </>
     );
 }
-
 export default App;
