@@ -32,9 +32,6 @@ export default function ({columns, rows}) {
                         }
                     </tr>
                     </thead>
-
-
-
                     <tbody>
                     {
                         rows.map((row) => (
@@ -46,8 +43,6 @@ export default function ({columns, rows}) {
                     }
                     </tbody>
                 </table>
-
-
                 <CellSelection/>
             </div>
         </TableContext>

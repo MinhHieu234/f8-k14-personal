@@ -22,8 +22,6 @@ export default function ({row, column}) {
             const left = cellRef.current.offsetLeft;
             const width = cellRef.current.offsetWidth;
             const height = cellRef.current.offsetHeight;
-
-            //set
             setCursor({
                 ...cursor,
                 top: top,
