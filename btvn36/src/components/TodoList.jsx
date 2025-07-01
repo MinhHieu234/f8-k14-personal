@@ -1,6 +1,5 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-
 function TodoList({ todos, onDelete, onUpdate, onToggle }) {
     return (
         <div className="todo-list">
@@ -16,5 +15,4 @@ function TodoList({ todos, onDelete, onUpdate, onToggle }) {
         </div>
     );
 }
-
 export default TodoList;
