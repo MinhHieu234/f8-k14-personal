@@ -1,0 +1,20 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "firstName": "Hieu",
+      "lastName": "Nguyen",
+      "email": "hieu@gmail.com",
+      "phone": "0123456789",
+      "avatar": "https://i.pravatar.cc/150?u=1"
+    },
+    {
+      "id": "073e",
+      "firstName": "Hieu",
+      "lastName": "minh",
+      "email": "admin@gmail.com",
+      "phone": "09408348834",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqwsGqljlOAlxlQtQs8YD6Ka67uZgapcG0WA&s"
+    }
+  ]
+}
