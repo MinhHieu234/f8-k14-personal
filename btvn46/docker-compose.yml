@@ -1,0 +1,22 @@
+services:
+  web:
+    container_name: btvn-day46
+    image: btvn-day46
+    build:
+      context: ../btvn-day46
+      dockerfile: Dockerfile
+
+    volumes:
+      - '../btvn-day46:/app/btvn-day46'
+      - 'app/node_modules'
+    ports:
+      - "5173:5173"
+
+    command:
+      - npm
+      - run
+      - dev
+  next:
+    container_name: docker-k14-next
+    image: node:24-alpine3.21
+    working_dir:
